@@ -13,9 +13,10 @@
         body {
             margin: 0;
             font-family: Georgia, "Times New Roman", serif;
-            /* Page background using local bgphoto.jpg with soft pink overlay */
-            background-image: linear-gradient(rgba(255, 240, 245, 0.88), rgba(255, 224, 235, 0.92)), 
-                              url('bgphoto.jpg');
+            /* Separate image and blend mode to prevent background loading failures */
+            background-color: rgba(255, 235, 242, 0.85);
+            background-image: url('bgphoto.jpg');
+            background-blend-mode: overlay;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -182,14 +183,15 @@
             font-size: 15px;
         }
 
-        /* Letter Card with local bgphoto.jpg background */
+        /* Letter Card with bgphoto.jpg background */
         .letter {
             padding: 55px;
             border-radius: 24px;
             box-shadow: 0 10px 30px rgba(100, 50, 70, 0.15);
             border: 2px solid #f1ccd9;
-            background-image: linear-gradient(rgba(255, 250, 252, 0.92), rgba(255, 250, 252, 0.92)), 
-                              url('bgphoto.jpg');
+            background-color: rgba(255, 250, 252, 0.92);
+            background-image: url('bgphoto.jpg');
+            background-blend-mode: overlay;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -253,7 +255,7 @@
 
 <body>
 
-    <!-- Audio Player (hidden in background) -->
+    <!-- Background Music Audio Tag -->
     <audio id="bgMusic" src="song.mp3" loop></audio>
 
     <!-- Floating Background Hearts -->
@@ -377,9 +379,9 @@
             const content = document.getElementById("content");
             const music = document.getElementById("bgMusic");
 
-            // Play background music
-            music.play().catch(error => {
-                console.log("Audio autoplay was prevented: ", error);
+            // Play background song
+            music.play().catch(function(error) {
+                console.log("Audio playback failed: ", error);
             });
 
             cover.style.display = "none";
