@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Eka 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            /* Page background using local bgphoto.jpg with soft pink overlay */
+            background-image: linear-gradient(rgba(255, 240, 245, 0.88), rgba(255, 224, 235, 0.92)), 
+                              url('bgphoto.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #4a3038;
+            overflow-x: hidden;
+        }
+
+        /* Floating background elements */
+        .heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 25px;
+            animation: floatUp 7s linear infinite;
+            opacity: 0.7;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+        .heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            20% { opacity: 0.7; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Cover Section */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(5px);
+            padding: 60px 40px;
+            max-width: 650px;
+            width: 100%;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(120, 50, 80, 0.15);
+            border: 2px solid #f5c7d8;
+        }
+
+        .cover-card h1 {
+            font-size: 52px;
+            color: #c94f7c;
+            margin: 10px 0;
+        }
+
+        .cover-card h2 {
+            font-size: 26px;
+            font-weight: normal;
+            color: #8f526b;
+            margin-bottom: 20px;
+        }
+
+        .cover-card p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #5c3c46;
+        }
+
+        .open-button {
+            margin-top: 25px;
+            padding: 16px 38px;
+            border: none;
+            border-radius: 30px;
+            background: #d85b89;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(180, 60, 110, 0.3);
+        }
+
+        .open-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: #bd4775;
+            box-shadow: 0 8px 20px rgba(180, 60, 110, 0.4);
+        }
+
+        /* Main Content */
+        #content {
+            display: none;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        #content.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 50px 20px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title h1 {
+            color: #c94f7c;
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        .title p {
+            font-size: 18px;
+            color: #704253;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .photo {
+            background: white;
+            padding: 12px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(100, 50, 70, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo:hover {
+            transform: translateY(-6px) rotate(1deg);
+            box-shadow: 0 12px 25px rgba(100, 50, 70, 0.2);
+        }
+
+        .photo img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+        }
+
+        .photo-caption {
+            text-align: center;
+            padding: 12px 5px 4px;
+            font-style: italic;
+            color: #8f526b;
+            font-size: 15px;
+        }
+
+        /* Letter Card with local bgphoto.jpg background */
+        .letter {
+            padding: 55px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(100, 50, 70, 0.15);
+            border: 2px solid #f1ccd9;
+            background-image: linear-gradient(rgba(255, 250, 252, 0.92), rgba(255, 250, 252, 0.92)), 
+                              url('bgphoto.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .letter h2 {
+            text-align: center;
+            color: #c94f7c;
+            font-size: 36px;
+            margin-top: 0;
+            margin-bottom: 35px;
+        }
+
+        .letter p {
+            font-size: 17px;
+            line-height: 1.85;
+            margin-bottom: 22px;
+            color: #4a3038;
+            text-align: justify;
+        }
+
+        .wishes {
+            margin: 35px 0;
+            padding-left: 10px;
+            border-left: 3px solid #f5c7d8;
+        }
+
+        .wishes p {
+            text-align: left;
+            margin-bottom: 12px;
+            font-style: italic;
+        }
+
+        .signature {
+            text-align: right !important;
+            font-weight: bold;
+            font-size: 18px;
+            color: #c94f7c;
+            margin-top: 40px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px 60px;
+            color: #8f526b;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cover-card h1 { font-size: 38px; }
+            .title h1 { font-size: 36px; }
+            .gallery { grid-template-columns: 1fr; }
+            .photo img { height: 280px; }
+            .letter { padding: 30px 20px; }
+            .letter p { font-size: 16px; text-align: left; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Audio Player (hidden in background) -->
+    <audio id="bgMusic" src="song.mp3" loop></audio>
+
+    <!-- Floating Background Hearts -->
+    <div class="heart">💗</div>
+    <div class="heart">💕</div>
+    <div class="heart">🌸</div>
+    <div class="heart">💖</div>
+    <div class="heart">🌷</div>
+
+    <!-- Cover Page -->
+    <section class="cover" id="cover">
+        <div class="cover-card">
+            <div style="font-size: 60px; margin-bottom: 10px;">💐</div>
+            <h1>Happy Birthday, Eka!</h1>
+            <h2>A little letter from Zerwin 💗</h2>
+            <p>
+                Some memories, some chaos, and a very long letter 
+                from your friend since high school.
+            </p>
+            <button class="open-button" onclick="openLetter()">
+                💌 Click to Open
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div id="content">
+        <div class="container">
+            <div class="title">
+                <div style="font-size: 40px; margin-bottom: 10px;">🌸 💗 🌸</div>
+                <h1>Happy Birthday, Eka!</h1>
+                <p>A collection of memories before you read the long letter 😭</p>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div class="gallery">
+                <div class="photo">
+                    <img src="photo1.jpg" alt="Memory 1">
+                    <div class="photo-caption">One of the many memories 💗</div>
+                </div>
+
+                <div class="photo">
+                    <img src="photo2.jpg" alt="Memory 2">
+                    <div class="photo-caption">The chaos continues 😭</div>
+                </div>
+
+                <div class="photo">
+                    <img src="photo4.jpg" alt="Memory 4">
+                    <div class="photo-caption">Still making memories 🌸</div>
+                </div>
+
+                <div class="photo">
+                    <img src="photo5.jpg" alt="Memory 5">
+                    <div class="photo-caption">More memories to come 💕</div>
+                </div>
+            </div>
+
+            <!-- Letter Section -->
+            <div class="letter">
+                <h2>Dear Eka 💌</h2>
+
+                <p>
+                    Happy birthday Eka, we have been friends since highschool, I still remember during
+                    highschool na sabay ta ninyo sa canteen mag lunch, chika chika, mangaway gamay
+                    (WHAHAHA), tapos lakaw pabalik sa room, unya saba kaayo ta hilak gud maam Aprilyn,
+                    then pagkauwian kaon sa gawas mag sturya sa mga nangyari sa room tas sabay ta
+                    ninyo pauli (hehe libre nimo among pamasahe) I really miss those days that we wouldn’t
+                    have to worry so much of the next days, tas di nato namalayan college na deay
+                    ta iba iba ang mga gina pursue (siya), tas naghiwalay nag skwelahan (ako ra
+                    deay), I also remember when you helped me with the TLE?? Tung yema ingredients
+                    na di ko naayos iluto (HWAHA)
+                </p>
+
+                <p>
+                    Ever since we have been friends, I had always seen you as a wonderful, kind, thoughtful,
+                    caring, and reliable person (ramag AI). You have always cared for the people around you.
+                    You are a very firm woman and independent woman; someone you would go to when
+                    you have problems. One of the things I like about you is that you are good yet
+                    bad – basta kanang softhearted to those around her and very fierce to those who
+                    goes against her, like rawr. I admire your personality the way you be yourself,
+                    almost like a perfect person, but I know you might have some problems that you don’t
+                    share (sheesh psychology) baka may tinatago kang mga problema rant ka lang sa
+                    amin.
+                </p>
+
+                <p>
+                    Im sorry when there were times that I couldn’t be there when you needed a friend
+                    (naa bitaw aneca ug rj jk) pero FR sorry hehe, I regret not joining our calls on
+                    teams I wish I could go back and spend it more with you guys. (hala siya
+                    ginawang story niya ang letter)
+                </p>
+
+                <div class="wishes">
+                    <p>✨ I wish that you continue to be you</p>
+                    <p>✨ I wish that when we get older you would be able to show off that arrogant playful smirk of yours ( GI ACT NIMO NOH? Wala? Sge :( )</p>
+                    <p>✨ I wish that whatever challenges you encounter you would be able to overcome it</p>
+                    <p>✨ I wish you a wealthy/healthy life</p>
+                    <p>✨ I wish that you achieve your dreams</p>
+                    <p>✨ I wish you a Happy Birthday</p>
+                </div>
+
+                <p class="signature">From Zerwin</p>
+
+                <div style="text-align: center; font-size: 32px; margin-top: 30px;">
+                    🌸 💗 🌸
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            Made with memories, chaos, and friendship. 💗
+            <br><br>
+            <strong>Happy Birthday, Eka! 🎂</strong>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function openLetter() {
+            const cover = document.getElementById("cover");
+            const content = document.getElementById("content");
+            const music = document.getElementById("bgMusic");
+
+            // Play background music
+            music.play().catch(error => {
+                console.log("Audio autoplay was prevented: ", error);
+            });
+
+            cover.style.display = "none";
+            content.classList.add("show");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+    </script>
+</body>
+</html>
